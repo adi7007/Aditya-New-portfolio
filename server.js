@@ -26,6 +26,15 @@ app.get('/', (req, res) => {
   res.send('Contact backend is running!');
 });
 
+app.get('/api/contacts', (req, res) => {
+  if (fs.existsSync('contacts.json')) {
+    const data = JSON.parse(fs.readFileSync('contacts.json'));
+    res.json(data);
+  } else {
+    res.json([]);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
