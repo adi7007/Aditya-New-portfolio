@@ -772,7 +772,7 @@ main {
   align-items: center;
   justify-content: center;
   background: var(--bg-gradient-yellow-1);
-  color: var(--smoky-black);
+  color: var(--white-2);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: var(--fs-7);
@@ -1023,7 +1023,7 @@ main {
   border-radius: 10px;
   font-size: var(--fs-6);
   font-weight: var(--fw-600);
-  color: var(--smoky-black);
+  color: var(--white-1);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
