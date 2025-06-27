@@ -851,10 +851,11 @@ main {
 }
 
 
+
 /* Add certification section styles */
 .certifications .article-title {
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .certification-list {
