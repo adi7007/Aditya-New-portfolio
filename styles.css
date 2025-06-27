@@ -426,7 +426,6 @@ main {
   font-size: 18px;
 }
 
-
 .social-item .social-link:hover { color: var(--light-gray); }
 
 
@@ -749,6 +748,109 @@ main {
 
 .article-title { margin-bottom: 30px; }
 
+/* Resume Download Button Styles */
+.resume-download {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.resume-title {
+  margin-bottom: 25px;
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-600);
+}
+
+.resume-download-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resume-download-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: var(--fs-7);
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-3);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.resume-download-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.resume-download-btn:hover::before {
+  left: 100%;
+}
+
+.resume-download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-4);
+  background: var(--bg-gradient-yellow-2);
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.download-icon {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.resume-download-btn:hover .download-icon {
+  transform: translateY(-2px);
+}
+
+.btn-text {
+  font-weight: var(--fw-600);
+  letter-spacing: 0.8px;
+}
+
+.btn-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.resume-download-btn:hover .btn-glow {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+}
+
+.resume-download-btn:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-2);
+}
 
 /**
  * education and experience 
@@ -821,26 +923,27 @@ main {
 
 .skills-list { padding: 20px; }
 
-
 .skills-item:not(:last-child) { margin-bottom: 15px; }
 
 .skill .title-wrapper {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 8px;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .skill .title-wrapper data {
   color: var(--light-gray);
   font-size: var(--fs-7);
-  font-weight: var(--fw-300);
+  font-weight: var(--fw-500);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .skill-progress-bg {
   background: var(--jet);
   width: 100%;
-  height: 8px;
+  height: 6px;
   border-radius: 10px;
 }
 
@@ -848,6 +951,89 @@ main {
   background: var(--text-gradient-yellow);
   height: 100%;
   border-radius: inherit;
+  transition: width 0.25s ease;
+}
+
+/* Skills Section Styles */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.skill-category {
+  background: var(--eerie-black-1);
+  border: 1px solid var(--jet);
+  border-radius: 16px;
+  padding: 20px;
+  transition: var(--transition-1);
+}
+
+.skill-category:hover {
+  border-color: var(--orange-yellow-crayola);
+  transform: translateY(-2px);
+}
+
+.skill-category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-600);
+}
+
+.skill-category-title ion-icon {
+  font-size: 20px;
+  color: var(--orange-yellow-crayola);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 10px;
+  background: var(--bg-gradient-jet);
+  border: 1px solid var(--jet);
+  border-radius: 12px;
+  transition: var(--transition-1);
+  text-align: center;
+}
+
+.skill-item:hover {
+  border-color: var(--orange-yellow-crayola);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+}
+
+.skill-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-gradient-yellow-1);
+  border-radius: 10px;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  color: var(--smoky-black);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-name {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-500);
+  color: var(--light-gray);
+  text-align: center;
+  line-height: 1.2;
 }
 
 
@@ -1408,6 +1594,16 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .form-btn ion-icon { font-size: 18px; }
 
+  /* Resume Download Button Responsive */
+  .resume-download { margin-bottom: 50px; }
+
+  .resume-download-btn {
+    padding: 14px 26px;
+    font-size: var(--fs-4);
+  }
+
+  .download-icon { font-size: 20px; }
+
 }
 
 
@@ -1507,6 +1703,14 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: max-content;
     margin-left: auto;
   }
+
+  /* Resume Download Button Responsive */
+  .resume-download-btn {
+    padding: 14px 26px;
+    font-size: var(--fs-4);
+  }
+
+  .download-icon { font-size: 20px; }
   
 }
 
@@ -1622,6 +1826,32 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .blog-banner-box { height: 230px; }
+
+  /* Skills Section Responsive */
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+  }
+
+  .skill-category { padding: 35px; }
+
+  .skill-item { padding: 30px 25px; }
+
+  .skill-icon {
+    width: 80px;
+    height: 80px;
+    font-size: var(--fs-3);
+  }
+
+  .skill-name { font-size: var(--fs-5); }
+
+  /* Resume Download Button Responsive */
+  .resume-download-btn {
+    padding: 14px 26px;
+    font-size: var(--fs-4);
+  }
+
+  .download-icon { font-size: 20px; }
 
 }
 
@@ -1748,4 +1978,26 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+}
+
+/* Skills Section Responsive */
+.skills-section { gap: 25px; }
+
+.skill-category { padding: 25px; }
+
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+}
+
+.skill-item { padding: 20px 15px; }
+
+.skill-icon {
+  width: 60px;
+  height: 60px;
+  font-size: var(--fs-5);
+}
+
+.skill-name {
+  font-size: var(--fs-6);
 }
