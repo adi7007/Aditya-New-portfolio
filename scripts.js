@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = form.email.value;
       const message = form.message.value;
 
-      fetch('http://localhost:3001/api/contact', {
+      fetch('https://aditya-new-portfolio.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullname, email, message })
