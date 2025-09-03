@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add click event to each navigation button
   navigationLinks.forEach(link => {
-    // Remove the second instance of navigationLinks reference
-    console.log(`Clicked on: ${link.getAttribute("data-nav-link")}`); // Debugging log
+      console.log(`Clicked on: ${link.getAttribute("data-nav-link")}`); // Debugging log
       link.addEventListener("click", function () {
           const targetPage = this.getAttribute("data-nav-link");
 
@@ -41,10 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Show the selected section
           const targetSection = document.querySelector(`[data-page="${targetPage}"]`);
-          console.log(`Showing section: ${targetPage}`); // Debugging log
-          console.log(`Showing section: ${targetPage}`); // Debugging log
-    console.log(`Activating section: ${targetPage}`); // Debugging log
-
           if (targetSection) {
               console.log(`Activating section: ${targetPage}`);
               targetSection.classList.add("active");
@@ -56,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
-
 
 
 // Ensure DOM is fully loaded before executing script
@@ -156,6 +150,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .catch(() => alert('Failed to send message. Please try again later.'));
+    });
+  }
+
+  // ==============================
+  // Certificate Image Popup Logic
+  // ==============================
+  const certImages = document.querySelectorAll(".certificate-img");
+  const certModal = document.getElementById("imageModal");
+  const certModalImg = document.getElementById("modalImg");
+  const certCaption = document.getElementById("caption");
+  const certClose = document.querySelector("#imageModal .close");
+
+  if (certImages.length > 0 && certModal && certModalImg && certCaption && certClose) {
+    certImages.forEach(img => {
+      img.addEventListener("click", function () {
+        certModal.style.display = "block";
+        certModalImg.src = this.src;
+        certCaption.textContent = this.alt;
+      });
+    });
+
+    // Close on X button
+    certClose.addEventListener("click", () => {
+      certModal.style.display = "none";
+    });
+
+    // Close on clicking outside image
+    certModal.addEventListener("click", (e) => {
+      if (e.target === certModal) {
+        certModal.style.display = "none";
+      }
     });
   }
 });
